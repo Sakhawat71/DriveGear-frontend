@@ -1,5 +1,5 @@
 
-const Error = () => {
+const ErrorPage = () => {
 
 
     return (
@@ -10,4 +10,4 @@ const Error = () => {
     );
 };
 
-export default Error;
+export default ErrorPage;
