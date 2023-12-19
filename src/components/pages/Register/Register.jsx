@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import { FaGoogle } from "react-icons/fa";
+import { updateProfile } from "firebase/auth";
 
 
 const Register = () => {
@@ -23,6 +24,19 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
+
+                //update user name and photo
+                updateProfile(user, {
+                    displayName: name,
+                    photoURL: photo,
+                })
+                    .then(()=>{
+                        console.log('update profile name and photo');
+                        console.log('updated user',user)
+                    })
+                    .catch((error)=>{
+                        console.log('profile update error',error.message)
+                    })
             })
             .catch((error) => {
                 console.error(error.message)
@@ -32,11 +46,11 @@ const Register = () => {
     // google sign in
     const handelSignWithGoogel = () => {
         signWithGoogle()
-            .then(result =>{
+            .then(result => {
                 console.log(result.user)
             })
-            .catch((error) =>{
-                console.log('googel error',error.message)
+            .catch((error) => {
+                console.log('googel error', error.message)
             })
     }
 
