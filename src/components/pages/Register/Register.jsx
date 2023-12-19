@@ -1,13 +1,17 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
-import { FaGoogle } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
 import { updateProfile } from "firebase/auth";
 
 
 const Register = () => {
 
+    const [error, setError] = useState([]);
+    const [showPassword, setShowPassword] = useState(false);
+    const [firebaseError, setFirebaseError] = useState([]);
     const { signUpWithEmailPass, signWithGoogle } = useContext(AuthContext);
+    const navigate = useNavigate()
 
     // email password sign in
     const handelSingIn = (e) => {
@@ -20,26 +24,45 @@ const Register = () => {
 
         // console.log(name, photo, email, password)
 
+        setError("")
+        setFirebaseError("")
+
+        if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
+            setError("Please enter a valid email address.")
+            return;
+        }
+        else if (!/^.{6,}$/.test(password)) {
+            setError("Password is less than 6 characters")
+            return;
+        }
+        else if (!/^(?=.*[A-Z]).{6,}$/.test(password)) {
+            setError("At least one capital letter is required")
+            return;
+        }
+        else if (!/^(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-]).{6,}$/.test(password)) {
+            setError("At least one special character is required")
+            return;
+        }
         signUpWithEmailPass(email, password)
             .then(result => {
                 const user = result.user;
-                // console.log(user)
 
                 //update user name and photo
                 updateProfile(user, {
                     displayName: name,
                     photoURL: photo,
                 })
-                    .then(()=>{
+                    .then(() => {
                         console.log('update profile name and photo');
                         // console.log('updated user',user)
                     })
-                    .catch((error)=>{
-                        console.log('profile update error',error.message)
+                    .catch((error) => {
+                        setFirebaseError(error.message)
                     })
+                navigate('/')
             })
             .catch((error) => {
-                console.error(error.message)
+                setFirebaseError(error.message)
             })
     }
 
@@ -48,9 +71,10 @@ const Register = () => {
         signWithGoogle()
             .then(result => {
                 console.log(result.user)
+                navigate('/')
             })
             .catch((error) => {
-                console.log('googel error', error.message)
+                setFirebaseError(error.message)
             })
     }
 
@@ -109,25 +133,25 @@ const Register = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input
-                                // type={showPassword ? "text" : "password"}
+                                type={showPassword ? "text" : "password"}
                                 name="password"
                                 placeholder="Password"
                                 className="input input-bordered "
                                 required />
 
-                            {/* <span onClick={() => setShowPassword(!showPassword)} className="absolute top-12 right-6 text-xl">
+                            <span onClick={() => setShowPassword(!showPassword)} className="absolute top-12 right-6 text-xl">
                                 {
                                     showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>
-                                }</span> */}
+                                }</span>
 
 
                             <span className="text-red-700 mt-5">
-                                {/* {
+                                {
                                     error
                                 }
                                 {
                                     firebaseError
-                                } */}
+                                }
                             </span>
                         </div>
 
