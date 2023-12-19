@@ -18,12 +18,12 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
 
-        console.log(name, photo, email, password)
+        // console.log(name, photo, email, password)
 
         signUpWithEmailPass(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user)
+                // console.log(user)
 
                 //update user name and photo
                 updateProfile(user, {
@@ -32,7 +32,7 @@ const Register = () => {
                 })
                     .then(()=>{
                         console.log('update profile name and photo');
-                        console.log('updated user',user)
+                        // console.log('updated user',user)
                     })
                     .catch((error)=>{
                         console.log('profile update error',error.message)

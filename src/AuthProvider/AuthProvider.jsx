@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { createContext, useEffect, useState } from 'react';
 import { auth } from '../firebase/firebase.config';
-import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth';
+import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 
 
 export const AuthContext = createContext(null);
@@ -27,7 +27,7 @@ const AuthProvider = ({children}) => {
     // login email pass
     const loginEmailPass = (email ,password) =>{
         setLoading(true);
-        return signUpWithEmailPass(auth,email,password);
+        return signInWithEmailAndPassword(auth,email,password);
     }
 
     // manage user
