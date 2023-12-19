@@ -1,45 +1,11 @@
-import { useContext, useState } from "react";
-import { Link, useLocation, useNavigate, } from "react-router-dom";
-import { AuthContext } from "../../AuthProvider/AuthProvider";
-import { FaEye, FaEyeSlash, } from "react-icons/fa";
-
+import { Link } from "react-router-dom";
 
 
 const Login = () => {
 
-    const location = useLocation();
-    const navigate = useNavigate();
+    
 
-    const [showPassword, setShowPassword] = useState(false);
-    const { logInWihtEmailPass } = useContext(AuthContext);
-    const [firebaseError, setFirebaseError] = useState([]);
-
-    const handelLogIn = e => {
-        e.preventDefault()
-        setFirebaseError("")
-        const form = new FormData(e.currentTarget);
-        const email = form.get('email');
-        const password = form.get('password');
-
-        logInWihtEmailPass(email, password)
-            .then(() => {
-                navigate(location?.state ? location.state : "/")
-            })
-            .catch((error) => {
-                setFirebaseError(getCustomErrorMessage(error))
-            })
-
-    }
-
-    const getCustomErrorMessage = (error) => {
-        switch (error.code) {
-            case "auth/invalid-login-credentials":
-                return "Incorrect email/password.Please try again.";
-            default:
-                return error.code;
-        }
-    };
-
+   
     return (
 
         <div className="hero min-h-screen bg-base-200">
@@ -50,7 +16,7 @@ const Login = () => {
 
 
                 <div className="card shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
-                    <form onSubmit={handelLogIn} className="card-body  lg:w-[400px]">
+                    <form className="card-body  lg:w-[400px]">
 
                         <div className="form-control">
                             <label className="label">
@@ -70,18 +36,18 @@ const Login = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input
-                                type={showPassword ? "text" : "password"}
+                                // type={showPassword ? "text" : "password"}
                                 name="password"
                                 placeholder="Password"
                                 className="input input-bordered"
                                 required />
-                            <span
+                            {/* <span
                                 onClick={() => setShowPassword(!showPassword)}
                                 className="absolute top-12 right-4 text-xl">
                                 {
                                     showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>
                                 }
-                            </span>
+                            </span> */}
 
                             <label className="label">
                                 <Link
@@ -91,9 +57,9 @@ const Login = () => {
                         </div>
 
                         <span className="text-red-700">
-                            {
+                            {/* {
                                 firebaseError
-                            }
+                            } */}
                         </span>
 
                         <div className="form-control mt-6 mb-2">
