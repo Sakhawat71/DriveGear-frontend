@@ -7,6 +7,7 @@ import Register from "../components/pages/Register/Register";
 import AddProducts from "../components/AddProducts/AddProducts";
 import Mycart from "../components/Mycart/Mycart";
 import PrivetRouter from "./PrivetRouter";
+import UpdateProduct from "../components/UpdateProduct/UpdateProduct";
 
 const router = createBrowserRouter([
     {
@@ -34,8 +35,11 @@ const router = createBrowserRouter([
             {
                 path: '/mycart',
                 element: <PrivetRouter><Mycart></Mycart></PrivetRouter>
+            },
+            {
+                path: '/update-product',
+                element: <PrivetRouter><UpdateProduct></UpdateProduct></PrivetRouter>
             }
-
         ]
     }
 ])
