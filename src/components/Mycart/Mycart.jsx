@@ -4,7 +4,7 @@ const Mycart = () => {
 
 
     return (
-        <div className="h-screen">
+        <div className="min-h-screen">
             
         </div>
     );
