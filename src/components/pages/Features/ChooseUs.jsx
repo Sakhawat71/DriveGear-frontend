@@ -16,7 +16,7 @@ const ChooseUs = () => {
 
                 <div className=" py-5">
                     <figure className="mx-auto  justify-center flex">
-                        <img className="w-[96px]" src="/public/asset/trusted-64.png" alt="" />
+                        <img className="w-[96px]" src="/asset/trusted-64.png" alt="" />
                     </figure>
                     <h2 className="text-xl text-center font-semibold">Trusted Car Dealership</h2>
                     <p className="px-4 text-center pt-2">Discover the assurance of quality and integrity when choosing our well-established and reputable services today.</p>
