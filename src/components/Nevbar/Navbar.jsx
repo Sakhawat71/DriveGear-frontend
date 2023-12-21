@@ -28,7 +28,7 @@ const Navbar = () => {
         <li>
             <NavLink
                 className={({ isActive, isPending }) => isActive ? 'text-blue-600' : isPending ? 'text-black' : ''}
-                to="/addProduct"
+                to="/add-product"
             >Add Product</NavLink>
         </li>
         <li>
