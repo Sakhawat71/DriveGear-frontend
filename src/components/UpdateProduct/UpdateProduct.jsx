@@ -24,8 +24,8 @@ const UpdateProduct = () => {
 
             <form onSubmit={handelUpdateProduct} className="bg-[#F4F3F0] px-10 md:px-28 py-10">
                 <div className="text-center my-5 space-y-3">
-                    <h2 className="font-bold text-2xl">Add New Product</h2>
-                    <p>Add products with caution. If there is any mistake in adding the product, go to Update Product and update the product with the correct information. After giving the information of Image, Name, Brand Name, Type, Price, Short description, Rating click on add Product.</p>
+                    <h2 className="font-bold text-2xl">Update Product</h2>
+                    <p>Product product with correct information. After giving the information of Image, Name, Brand Name, Type, Price, Short description, Rating click on Update Product.</p>
                 </div>
 
                 <div className="md:flex justify-center items-center gap-10">
@@ -104,7 +104,7 @@ const UpdateProduct = () => {
 
                 <input
                     type="submit"
-                    value="Add Product"
+                    value="Update Product"
                     className="btn bg-[#D2B48C] text-[#331A15]  mt-10 btn-block"
                 />
             </form>
