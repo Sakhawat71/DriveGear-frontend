@@ -1,9 +1,9 @@
 
 const AddProducts = () => {
 
-    
+
     return (
-        <div>
+        <div className="h-screen">
             
         </div>
     );

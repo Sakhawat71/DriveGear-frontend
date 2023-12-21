@@ -2,9 +2,9 @@
 const Mycart = () => {
 
 
-    
+
     return (
-        <div>
+        <div className="h-screen">
             
         </div>
     );
