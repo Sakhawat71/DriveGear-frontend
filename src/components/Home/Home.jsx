@@ -4,7 +4,7 @@ import Compare from "../pages/Features/Compare";
 
 const Home = () => {
     return (
-        <div>
+        <div className="mx-auto justify-center">
             <Banner></Banner>
             <Compare></Compare>
             <ChooseUs></ChooseUs>

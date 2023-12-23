@@ -1,7 +1,7 @@
 
 const Compare = () => {
     return (
-        <div className="grid border items-center grid-cols-1 lg:grid-cols-2 max-w-7xl lg:gap-10 my-10 py-10 bg-[#e9e7e7] ">
+        <div className="grid mx-auto border items-center grid-cols-1 lg:grid-cols-2 lg:gap-10 my-10 py-10 bg-[#e9e7e7] ">
             
             <div className="space-y-5 text-center lg:text-left px-2 lg:pl-10 md:space-y-10 mx-auto items-center justify-center mb-16 lg:mb-0">
                 <h4 className="text-2xl font-bold text-[#46D993] ">Compare Car</h4>

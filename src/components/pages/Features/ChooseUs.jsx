@@ -1,7 +1,7 @@
 
 const ChooseUs = () => {
     return (
-        <div className="max-w-7xl my-10  ">
+        <div className=" my-10  ">
             <h2 className="text-5xl text-center font-semibold">Why Choose Us?</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 justify-center py-10">
