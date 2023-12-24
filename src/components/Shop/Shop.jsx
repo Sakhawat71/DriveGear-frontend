@@ -1,25 +1,23 @@
-// import { useState } from "react";
+
 import { useLoaderData, useParams } from "react-router-dom";
 
 const Shop = () => {
 
-
-    const brandName = useParams()
+    const paramsData = useParams();
     const allProducts = useLoaderData();
 
-    // const selected = allProducts?.filter(car => car.brand === brandName)
+    const queryBrand = paramsData.brand;
+    const selected = allProducts.map(car => car.brand)
 
-    console.log(brandName)
-    console.log(allProducts)
+    console.log(queryBrand)
+    console.log(selected)
 
     return (
-        <div>
+        <div className="min-h-screen">
             {
-                allProducts?.length
+                allProducts?.map(car => <li key={car._id}>{car.brand}</li>)
             }
-            {
-                // car?.length
-            }
+
         </div>
     );
 };
