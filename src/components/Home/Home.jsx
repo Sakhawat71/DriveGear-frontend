@@ -18,7 +18,7 @@ const Home = () => {
     return (
         <div className="mx-auto justify-center">
             <Banner></Banner>
-            <div className="grid gap-5 border grid-cols-1 md:gap-10 md:grid-cols-2 lg:grid-cols-3 my-20">
+            <div className="grid gap-5 grid-cols-1 md:gap-10 md:grid-cols-2 lg:grid-cols-3 my-20">
                 {
                     categories?.map(category => <Products
                         key={category.id}
