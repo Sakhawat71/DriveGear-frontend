@@ -4,7 +4,7 @@ import { FaStar } from "react-icons/fa";
 
 const ShopCategory = ({ car }) => {
 
-    const {  image, brand, name, price, rating, type } = car;
+    const { _id, image, brand, name, price, rating, type } = car;
 
     return (
         <div className="card card-compact bg-base-100 shadow-xl">
@@ -23,8 +23,8 @@ const ShopCategory = ({ car }) => {
                     <p className=''><span className='flex items-center  justify-end'>Retting {rating} <FaStar className='ml-1 text-yellow-400'/></span></p>
                 </div>
                 <div className="card-actions justify-between">
-                    <Link to={''} className="btn font-bold text-blue-900">Details</Link>
-                    <Link className="btn font-bold bg-[#46D993]">Update</Link>
+                    <Link to={`/details/${_id}`} className="btn font-bold text-blue-900">Details</Link>
+                    <Link to={`/update-product/${_id}`} className="btn font-bold bg-[#46D993]">Update</Link>
                 </div>
             </div>
         </div>

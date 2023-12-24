@@ -9,6 +9,7 @@ import Mycart from "../components/Mycart/Mycart";
 import PrivetRouter from "./PrivetRouter";
 import UpdateProduct from "../components/UpdateProduct/UpdateProduct";
 import Shop from "../components/Shop/Shop";
+import Details from "../components/pages/Details/Details";
 
 const router = createBrowserRouter([
     {
@@ -38,13 +39,18 @@ const router = createBrowserRouter([
                 element: <PrivetRouter><Mycart></Mycart></PrivetRouter>
             },
             {
-                path: '/update-product',
+                path: '/update-product/:id',
                 element: <PrivetRouter><UpdateProduct></UpdateProduct></PrivetRouter>
             },
             {
                 path: '/product/:brand',
                 element: <Shop></Shop>,
                 loader: () => fetch('http://localhost:5000/products')
+            },
+            {
+                path:'/details/:id',
+                element: <PrivetRouter><Details></Details></PrivetRouter>,
+                loader: ({params})=> fetch(`http://localhost:5000/products/${params.id}`)
             }
         ]
     }
