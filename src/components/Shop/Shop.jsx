@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import Product from "../Product/Product";
+import AdsSlider from "../pages/AdsSlider/AdsSlider";
 
 
 const Shop = () => {
@@ -28,14 +29,20 @@ const Shop = () => {
     console.log(cars)
 
     return (
-        <div className="h-screen my-10">
+        <div className="min-h-screen my-10">
 
             {
                 cars?.length ?
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10">{cars?.map(car => <Product
-                        key={car._id}
-                        car={car}
-                    ></Product>)}</div>
+                    <div>
+                        <div className="shadow-lg mb-14">
+                            <AdsSlider></AdsSlider>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10">
+                            {cars?.map(car => <Product
+                                key={car._id}
+                                car={car}
+                            ></Product>)}</div>
+                    </div>
                     :
                     <div className="text-center mt-20 space-y-3">
                         <h2 className="font-bold text-4xl">No Products Available</h2>
