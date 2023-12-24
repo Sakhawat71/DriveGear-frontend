@@ -11,7 +11,7 @@ const ShopCategory = ({ car }) => {
             <figure>
                 <img src={image} alt="" />
             </figure>
-            <div className="card-body ">
+            <div className="card-body space-y-2">
                 <h2 className="card-title text-center">{name}</h2>
 
                 <div className='font-semibold '>
