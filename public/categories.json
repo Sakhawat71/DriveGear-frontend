@@ -1,0 +1,37 @@
+[{
+        "id": 1,
+        "brand": "toyota",
+        "titel": "Toyota",
+        "image": "https://i.ibb.co/09QH47g/toyota.png"
+    },
+    {
+        "id": 2,
+        "brand": "ford",
+        "titel": "Ford",
+        "image": "https://i.ibb.co/TvfYSVp/ford.png"
+    },
+    {
+        "id": 3,
+        "brand": "bmw",
+        "titel": "BMW",
+        "image": "https://i.ibb.co/br0hNQD/bmw.png"
+    },
+    {
+        "id": 4,
+        "brand": "mercedes-benz",
+        "titel": "Mercedes-Benz",
+        "image": "https://i.ibb.co/yRNgJp5/mercedes-benz.png"
+    },
+    {
+        "id": 5,
+        "brand": "tesla",
+        "titel": "Tesla",
+        "image": "https://i.ibb.co/jJXp23L/tesla.png"
+    },
+    {
+        "id": 6,
+        "brand": "honda",
+        "titel": "Honda",
+        "image": "https://i.ibb.co/N606tSv/honda.png"
+    }
+]

@@ -8,6 +8,7 @@ import AddProducts from "../components/AddProducts/AddProducts";
 import Mycart from "../components/Mycart/Mycart";
 import PrivetRouter from "./PrivetRouter";
 import UpdateProduct from "../components/UpdateProduct/UpdateProduct";
+import Shop from "../components/Shop/Shop";
 
 const router = createBrowserRouter([
     {
@@ -17,8 +18,8 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home></Home>
-
+                element: <Home></Home>,
+                loader: () => fetch('http://localhost:5000/products')
             },
             {
                 path: '/login',
@@ -39,6 +40,11 @@ const router = createBrowserRouter([
             {
                 path: '/update-product',
                 element: <PrivetRouter><UpdateProduct></UpdateProduct></PrivetRouter>
+            },
+            {
+                path: '/product/:barnd',
+                element: <Shop></Shop>,
+                loader: () => fetch('http://localhost:5000/products')
             }
         ]
     }
