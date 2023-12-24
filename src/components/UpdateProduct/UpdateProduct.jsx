@@ -1,8 +1,12 @@
+import { useLoaderData } from "react-router-dom";
 
 const UpdateProduct = () => {
 
+    const loadedProduct = useLoaderData();
+    const { _id, name, brand, type, description, price, rating, image } = loadedProduct;
+
     const handelUpdateProduct = e => {
-       
+
         e.preventDefault()
         const form = e.target;
 
@@ -14,9 +18,21 @@ const UpdateProduct = () => {
         const description = form.description.value;
         const image = form.image.value;
 
-        const product = {name,brand,type,description,price,rating,image};
+        const updatedProduct = { name, brand, type, description, price, rating, image };
 
-        console.log(product)
+        // console.log(updatedProduct)
+
+        fetch(`http://localhost:5000/products/${_id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(updatedProduct)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
     }
 
     return (
@@ -34,7 +50,7 @@ const UpdateProduct = () => {
                             <span className="label-text font-semibold text-xl">Name</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" name="name" placeholder="Product name" className="input input-bordered w-full" />
+                            <input type="text" name="name" defaultValue={name} placeholder="Product name" className="input input-bordered w-full" />
                         </label>
                     </div>
                     <div className="form-control md:w-1/2">
@@ -42,7 +58,7 @@ const UpdateProduct = () => {
                             <span className="label-text font-semibold text-xl">Brand Name</span>
                         </label>
                         <label className="input-group">
-                            <select name="brand" className="select select-bordered w-full ">
+                            <select name="brand" defaultValue={brand} className="select select-bordered w-full ">
                                 <option value="toyota">Toyota</option>
                                 <option value="ford">Ford</option>
                                 <option value="bmw">BMW</option>
@@ -60,7 +76,7 @@ const UpdateProduct = () => {
                             <span className="label-text font-semibold text-xl">Type</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" name="type" placeholder="Car / Bike" className="input input-bordered w-full" />
+                            <input type="text" name="type" defaultValue={type} placeholder="Car / Bike" className="input input-bordered w-full" />
                         </label>
                     </div>
                     <div className="form-control md:w-1/2">
@@ -68,7 +84,7 @@ const UpdateProduct = () => {
                             <span className="label-text font-semibold text-xl">Price</span>
                         </label>
                         <label className="input-group">
-                            <input type="number" name="price" placeholder="Price" className="input input-bordered w-full" />
+                            <input type="number" name="price" defaultValue={price} placeholder="Price" className="input input-bordered w-full" />
                         </label>
                     </div>
                 </div>
@@ -79,7 +95,7 @@ const UpdateProduct = () => {
                             <span className="label-text font-semibold text-xl">Rating</span>
                         </label>
                         <label className="input-group">
-                            <input type="number" name="rating" placeholder="Rate Porduct out of 5" className="input input-bordered w-full" />
+                            <input type="number" name="rating" defaultValue={rating} placeholder="Rate Porduct out of 5" className="input input-bordered w-full" />
                         </label>
                     </div>
                     <div className="form-control md:w-1/2">
@@ -87,7 +103,7 @@ const UpdateProduct = () => {
                             <span className="label-text font-semibold text-xl">Short description</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" name="description" placeholder="Short description" className="input input-bordered w-full" />
+                            <input type="text" name="description" defaultValue={description} placeholder="Short description" className="input input-bordered w-full" />
                         </label>
                     </div>
                 </div>
@@ -98,7 +114,7 @@ const UpdateProduct = () => {
                         <span className="label-text font-semibold text-xl">Image</span>
                     </label>
                     <label className="input-group">
-                        <input type="text" name="image" placeholder="Enter image URL" className="input input-bordered w-full" />
+                        <input type="text" name="image" defaultValue={image} placeholder="Enter image URL" className="input input-bordered w-full" />
                     </label>
                 </div>
 
