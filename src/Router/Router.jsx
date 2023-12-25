@@ -41,17 +41,17 @@ const router = createBrowserRouter([
             {
                 path: '/update-product/:id',
                 element: <PrivetRouter><UpdateProduct></UpdateProduct></PrivetRouter>,
-                loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
+                loader: ({params}) => fetch(`https://brandshop-server-side-two.vercel.app/products/${params.id}`)
             },
             {
                 path: '/product/:brand',
                 element: <Shop></Shop>,
-                loader: () => fetch('http://localhost:5000/products')
+                loader: () => fetch('https://brandshop-server-side-two.vercel.app/products')
             },
             {
                 path:'/details/:id',
                 element: <PrivetRouter><Details></Details></PrivetRouter>,
-                loader: ({params})=> fetch(`http://localhost:5000/products/${params.id}`)
+                loader: ({params})=> fetch(`https://brandshop-server-side-two.vercel.app/products/${params.id}`)
             }
         ]
     }
