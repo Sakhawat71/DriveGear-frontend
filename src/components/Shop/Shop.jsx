@@ -18,15 +18,10 @@ const Shop = () => {
         if (queryBrand) {
             const selected = allProducts.filter((car) => car.brand === queryBrand);
             setCars(selected);
-
-            if (selected.length <= 0) {
-                console.log('sorry no products')
-            }
         }
 
     }, [allProducts, queryBrand]);
 
-    console.log(cars)
 
     return (
         <div className="min-h-screen my-10">

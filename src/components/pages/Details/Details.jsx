@@ -1,6 +1,12 @@
+import { useContext } from "react";
 import { Link, useLoaderData, useParams, } from "react-router-dom";
+import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const Details = () => {
+
+
+    const user = useContext(AuthContext);
+    console.log(user)
 
     const paramsData = useParams()
     const ProductId = paramsData.id;
@@ -10,6 +16,10 @@ const Details = () => {
 
     const handelAddToCard = () =>{
         console.log(ProductId)
+
+
+
+
     }
 
     return (
@@ -33,7 +43,7 @@ const Details = () => {
                     </div>
 
                     <div className="flex justify-around ">
-                        <button className="text-xl font-bold">{price} $</button>
+                        <button className="text-xl font-bold">{price}$</button>
                         <Link onClick={handelAddToCard} className="text-blue-700 font-bold text-xl">Add to Cart</Link>
                     </div>
                 </div>

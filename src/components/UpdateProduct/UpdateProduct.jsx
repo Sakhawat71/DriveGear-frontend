@@ -23,10 +23,10 @@ const UpdateProduct = () => {
 
         // console.log(updatedProduct)
 
-        fetch(`http://localhost:5000/products/${_id}`, {
+        fetch(`https://brandshop-server-side-two.vercel.app/products/${_id}`, {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/json'
+                "Content-Type": "application/json",
             },
             body: JSON.stringify(updatedProduct)
         })
@@ -35,10 +35,11 @@ const UpdateProduct = () => {
                 console.log(data)
                 if (data.modifiedCount > 0) {
                     Swal.fire({
-                        title: "Good job!",
-                        text: "Product Update!",
-                        icon: "success"
-                    });
+                        title: 'success!',
+                        text: 'Updated',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    })
                 }
             })
     }
