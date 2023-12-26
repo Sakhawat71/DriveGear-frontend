@@ -36,7 +36,8 @@ const Shop = () => {
                             {cars?.map(car => <Product
                                 key={car._id}
                                 car={car}
-                            ></Product>)}</div>
+                            ></Product>)}
+                        </div>
                     </div>
                     :
                     <div className="text-center mt-20 space-y-3">

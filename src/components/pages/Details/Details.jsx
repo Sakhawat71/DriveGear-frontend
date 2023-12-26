@@ -1,25 +1,38 @@
 import { useContext } from "react";
 import { Link, useLoaderData, useParams, } from "react-router-dom";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Details = () => {
 
+    const { id } = useParams()
+    const { user } = useContext(AuthContext);
+    const email = user.email;
 
-    const user = useContext(AuthContext);
-    console.log(user)
-
-    const paramsData = useParams()
-    const ProductId = paramsData.id;
     const data = useLoaderData();
     const { name, brand, description, price, rating, image } = data;
-    console.log(data)
 
-    const handelAddToCard = () =>{
-        console.log(ProductId)
+ 
+    const handelAddToCard = () => {
 
+        const cart = { email, id, name, brand, description, price, rating, image}
 
-
-
+        fetch('https://brandshop-server-side-two.vercel.app/user-cart', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(cart)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if(data.insertedId) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Added to Cart'
+                    })
+                }
+            })
     }
 
     return (
@@ -32,7 +45,7 @@ const Details = () => {
 
                 <div className=" w-1/2 p-5">
                     <h1 className="text-center text-3xl font-bold">{name}</h1>
-                    
+
                     <div className="flex justify-around my-5">
                         <h3 className="text-xl font-bold">Brand: {brand}</h3>
                         <h3 className="text-xl font-bold">Rating: {rating}☆</h3>
@@ -43,8 +56,9 @@ const Details = () => {
                     </div>
 
                     <div className="flex justify-around ">
-                        <button className="text-xl font-bold">{price}$</button>
-                        <Link onClick={handelAddToCard} className="text-blue-700 font-bold text-xl">Add to Cart</Link>
+                        <button className="text-xl font-bold text-[#1c8251]"><span className="text-gray-400">Price: </span>{price}$</button>
+
+                        <Link onClick={handelAddToCard} className="text-blue-700 font-bold text-xl btn hover:bg-[#46D993] hover:text-white">Add to Cart</Link>
                     </div>
                 </div>
             </div>
